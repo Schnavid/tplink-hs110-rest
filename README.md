@@ -10,9 +10,7 @@ Python3 based REST server for reading energy information from tplink hs110 smart
 
 **Request**
 
-http://127.0.0.1:5000/energy?ip=192.168.1.29&port=9999
-
-Query parameters must match ip and port of your tplink smartplug.
+http://127.0.0.1:1337/api/v1/energy?ip=192.168.1.29&port=9999
 
 **Example Response**
 
@@ -24,6 +22,36 @@ Query parameters must match ip and port of your tplink smartplug.
             "current_ma": 143,
             "power_mw": 7448,
             "total_wh": 10701,
+            "err_code": 0
+        }
+    }
+}
+```
+
+### [GET] monthly stats
+
+**Request**
+
+http://127.0.0.1:1337/api/v1/monthly?ip=192.168.1.29&port=9999&year=2020
+
+**Example Response**
+
+```
+{
+    "emeter": {
+        "get_monthstat": {
+            "month_list": [
+                {
+                    "year": 2020,
+                    "month": 10,
+                    "energy_wh": 4354
+                },
+                {
+                    "year": 2020,
+                    "month": 11,
+                    "energy_wh": 28652
+                }
+            ],
             "err_code": 0
         }
     }
